@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @restaurant %>
+    <p>
+    <strong>Review:</strong>
+    <p style='text-align: center'>
+      <% Review.where("#{params[:id]} == restaurant_id").each do |review|%>
+        <p>
+          <strong>Content:</strong>
+          <%= review.content %>
+        </p>
+        <p>
+          <strong>Rating:</strong>
+          <%= review.rating %>
+        </p>
+      <% end %>
+    </p>
+  </p>
+
+<%= link_to "add review", new_restaurant_review_path(@restaurant) %>
+<div>
+  <%= link_to "Back to restaurants", restaurants_path %>
+</div>
